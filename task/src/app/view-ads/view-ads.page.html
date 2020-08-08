@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #498bc3;color: white">
+    <ion-row>
+      <ion-col size="8" style="text-align: right;">
+        <ion-title >
+          View Ads
+        </ion-title>
+      </ion-col>
+
+      <ion-col size="4">
+        <ion-button (click)="goToPostAds()"  style="text-transform: capitalize" >Post Ad</ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-toolbar>
+
+  <ion-toolbar style="--background: #d4d4d4;">
+    <ion-searchbar color="medium" (ionClear)="fetchAds()"  (ionChange)="filterAds($event)" [(ngModel)]="adObj.searchTxt" showCancelButton="never"></ion-searchbar>
+  <ion-row>
+    
+    <ion-col size="3">
+      <div style="text-align: center;padding-top: 10px;">
+        <ion-label style="color: #498bc3;font-weight: bold;">Sort By</ion-label>
+      </div>
+     
+    </ion-col>
+    <ion-col size="9">
+      <ion-select [(ngModel)]="adObj.sortBy" (ionChange)="sortAds($event)"  interface="popover" placeholder="Select"  style="border: 1px solid #713dae;border-radius: 10px;background: #ffffff;color: #000000;">
+        <ion-select-option value="Price ASC">Price::Low to High</ion-select-option>
+        <ion-select-option value="Price DESC">Price:High to Low</ion-select-option>
+        <ion-select-option value="posted_date ASC">Recency::Oldest to Newest</ion-select-option>
+        <ion-select-option value="posted_date DESC">Recency:Newest to Oldest </ion-select-option>
+    </ion-select>  
+    </ion-col>
+    
+ 
+  </ion-row>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" style="--background: #dad0bb;">
+
+    <ion-card *ngFor="let adObj of adList">
+      <ion-row>
+        <ion-col>
+          <img src={{adObj.image}}/>
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-col>
+            </ion-col>
+            <ion-col>
+              <ion-card-subtitle>{{adObj.posted_date | date: 'dd/MM/yyyy' }}</ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+          <ion-card-title>{{adObj.title}}</ion-card-title>
+          <ion-card-subtitle> <span style="color:Red;">&#8377;</span>{{adObj.price}}</ion-card-subtitle>
+        </ion-col>
+      </ion-row>
+
+      
+  </ion-card>
+
+</ion-content>

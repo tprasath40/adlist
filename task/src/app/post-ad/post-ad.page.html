@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar style="--background: #498bc3;color: white">
+    <ion-row>
+      <ion-col size="8" style="text-align: right;">
+        <ion-title >
+          Post Ad
+        </ion-title>
+      </ion-col>
+
+      <ion-col size="4">
+        <ion-button (click)="goToViewAds()"  style="text-transform: capitalize" >View Ads</ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--offset-top:0px;--offset-bottom:0px;--background: #eae7e1;">
+  <form [formGroup]="formGroup" (ngSubmit)="postAd()" style="padding: 15px;">
+    <ion-list style="margin-top: 25%;">
+      <ion-item>
+        <ion-label position="floating">Image Url</ion-label>
+        <ion-input
+          formControlName="imgControl"
+          required="true"
+          [(ngModel)]="postAdObj.image"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Title</ion-label>
+        <ion-input
+          formControlName="titleControl"
+          required="true"
+          [(ngModel)]="postAdObj.title"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Price</ion-label>
+        <ion-input
+          formControlName="priceControl"
+          required="true"
+          type="tel"
+          [(ngModel)]="postAdObj.price"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+
+      <div style="text-align: center;padding-top: 5px;">
+        <ion-button [disabled]="!formGroup.valid" type="submit">
+          <ion-icon name="checkmark"></ion-icon>
+            save
+          </ion-button>
+      </div>
+     
+    
+
+  </form>
+</ion-content>
