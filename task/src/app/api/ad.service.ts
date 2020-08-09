@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient  } from '@angular/common/http';
-import { LoadingController,AlertController  } from '@ionic/angular';
+import { AlertController  } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +24,10 @@ export class AdService {
 
     await alert.present();
   }
+
+
+  
+
 
 
   public fetchAds() {

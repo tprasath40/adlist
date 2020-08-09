@@ -38,11 +38,11 @@ export class PostAdPage implements OnInit {
     console.log(this.postAdObj);
 
     this.adService.saveAd(this.postAdObj).subscribe((res) => {
-     
+      this.postAdObj ={};
    this.adService.presentAlert("Ads saved successfully")
 
     },  err => {
-      console.log(err);
+      this.adService.presentAlert("Error Occured. Please try again")
     });
   }
 
